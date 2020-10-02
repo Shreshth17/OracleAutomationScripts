@@ -14,5 +14,6 @@ def handler(ctx, data: io.BytesIO = None):
         # config has to be added by the user
         storageClient = oci.object_storage.ObjectStorageClient(config)
         if version=='Disabled' or version=='Suspended':
+            UpdateBucketDetails = oci.object_storage.models.UpdateBucketDetails(versioning= 'Enabled') 
             response= storageClient.update_bucket(namespace, bucketName, UpdateBucketDetails)
             print(response)
